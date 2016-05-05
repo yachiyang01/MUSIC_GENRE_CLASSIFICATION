@@ -1,0 +1,3 @@
+_Pitch_Mean	_Pitch_Std	_Pitch_Slope	_Pitch_PeriodFreq	_Pitch_PeriodAmp    _Pitch_PeriodEntropy
+523.7769 377.5007 246.5756 0.008686 7.7098 0.66133 0.9721 
+645.2711 386.6002 285.0965 0.024325 8.3523 0.69791 0.97258 

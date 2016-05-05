@@ -1,0 +1,399 @@
+%Find all pitch informations.
+clc;
+clear all;
+clear;
+
+%function trainingPitch
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Blue Training
+for i=0:49
+    if(i<10)
+        num=mat2str(i);
+        f='genres/blues/blues.0000';
+    else
+        num=mat2str(i);
+        f='genres/blues/blues.000';
+    end
+    subject='.au';
+    filename=[f num subject];
+    
+    % get fundamental frequency
+    freq=fundamental_f(filename);
+    
+    % get more info.
+    [Pitch_Mean Pitch_Std Pitch_Slope Freq Pitch_PeriodAmp Pitch_PeriodEntropy]=extractpitch(filename);
+    
+    PitchFeature(i+1, :) =[freq ; Pitch_Mean  ; Pitch_Std ; Pitch_Slope ; Freq ; Pitch_PeriodAmp ; Pitch_PeriodEntropy];
+    
+end
+%Sort the array and delete 5 max and 5 min
+[PitchFeature, index] = sort(PitchFeature);% 對矩陣 x 的元素進行排序
+lowerbound=PitchFeature(6,:);
+upperbound=PitchFeature(44,:);
+% Write to the file.
+fid=fopen('TrainingData/TrainingPitch_blues.txt','w');
+title='_Pitch_Mean	_Pitch_Std	_Pitch_Slope	_Pitch_PeriodFreq	_Pitch_PeriodAmp    _Pitch_PeriodEntropy';
+fprintf(fid,'%s\n',title);
+for j=1:7 %total songs of blues
+    fprintf(fid,'%s ',num2str(lowerbound(1,j)));
+end
+fprintf(fid,'\n');
+for j=1:7 %total songs of blues
+    fprintf(fid,'%s ',num2str(upperbound(1,j)));
+end
+fclose(fid);
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%classical Training
+for i=0:49
+    if(i<10)
+        num=mat2str(i);
+        f='genres/classical/classical.0000';
+    else
+        num=mat2str(i);
+        f='genres/classical/classical.000';
+    end
+    subject='.au';
+    filename=[f num subject];
+    
+    % get fundamental frequency
+    freq=fundamental_f(filename);
+    
+    % get more info.
+    [Pitch_Mean Pitch_Std Pitch_Slope Freq Pitch_PeriodAmp Pitch_PeriodEntropy]=extractpitch(filename);
+    
+    PitchFeature(i+1, :) =[freq ; Pitch_Mean  ; Pitch_Std ; Pitch_Slope ; Freq ; Pitch_PeriodAmp ; Pitch_PeriodEntropy];
+    
+end
+%Sort the array and delete 5 max and 5 min freq
+[PitchFeature, index] = sort(PitchFeature);% 對矩陣 x 的元素進行排序
+lowerbound=PitchFeature(6,:);
+upperbound=PitchFeature(44,:);
+% Write to the file.
+fid=fopen('TrainingData/TrainingPitch_classical.txt','w');
+title='_Pitch_Mean	_Pitch_Std	_Pitch_Slope	_Pitch_PeriodFreq	_Pitch_PeriodAmp    _Pitch_PeriodEntropy';
+fprintf(fid,'%s\n',title);
+for j=1:7 %total songs of classical
+    fprintf(fid,'%s ',num2str(lowerbound(1,j)));
+end
+fprintf(fid,'\n');
+for j=1:7 %total songs of classical
+    fprintf(fid,'%s ',num2str(upperbound(1,j)));
+end
+fclose(fid);
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Blue Training
+for i=0:49
+    if(i<10)
+        num=mat2str(i);
+        f='genres/country/country.0000';
+    else
+        num=mat2str(i);
+        f='genres/country/country.000';
+    end
+    subject='.au';
+    filename=[f num subject];
+    
+    % get fundamental frequency
+    freq=fundamental_f(filename);
+    
+    % get more info.
+    [Pitch_Mean Pitch_Std Pitch_Slope Freq Pitch_PeriodAmp Pitch_PeriodEntropy]=extractpitch(filename);
+    
+    PitchFeature(i+1, :) =[freq ; Pitch_Mean  ; Pitch_Std ; Pitch_Slope ; Freq ; Pitch_PeriodAmp ; Pitch_PeriodEntropy];
+    
+end
+%Sort the array and delete 5 max and 5 min
+[PitchFeature, index] = sort(PitchFeature);% 對矩陣 x 的元素進行排序
+lowerbound=PitchFeature(6,:);
+upperbound=PitchFeature(44,:);
+% Write to the file.
+fid=fopen('TrainingData/TrainingPitch_country.txt','w');
+title='_Pitch_Mean	_Pitch_Std	_Pitch_Slope	_Pitch_PeriodFreq	_Pitch_PeriodAmp    _Pitch_PeriodEntropy';
+fprintf(fid,'%s\n',title);
+for j=1:7 %total songs of country
+    fprintf(fid,'%s ',num2str(lowerbound(1,j)));
+end
+fprintf(fid,'\n');
+for j=1:7 %total songs of country
+    fprintf(fid,'%s ',num2str(upperbound(1,j)));
+end
+fclose(fid);
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%disco Training
+for i=0:49
+    if(i<10)
+        num=mat2str(i);
+        f='genres/disco/disco.0000';
+    else
+        num=mat2str(i);
+        f='genres/disco/disco.000';
+    end
+    subject='.au';
+    filename=[f num subject];
+    
+    % get fundamental frequency
+    freq=fundamental_f(filename);
+    
+    % get more info.
+    [Pitch_Mean Pitch_Std Pitch_Slope Freq Pitch_PeriodAmp Pitch_PeriodEntropy]=extractpitch(filename);
+    
+    PitchFeature(i+1, :) =[freq ; Pitch_Mean  ; Pitch_Std ; Pitch_Slope ; Freq ; Pitch_PeriodAmp ; Pitch_PeriodEntropy];
+    
+end
+%Sort the array and delete 5 max and 5 min
+[PitchFeature, index] = sort(PitchFeature);% 對矩陣 x 的元素進行排序
+lowerbound=PitchFeature(6,:);
+upperbound=PitchFeature(44,:);
+% Write to the file.
+fid=fopen('TrainingPitch_disco.txt','w');
+title='_Pitch_Mean	_Pitch_Std	_Pitch_Slope	_Pitch_PeriodFreq	_Pitch_PeriodAmp    _Pitch_PeriodEntropy';
+fprintf(fid,'%s\n',title);
+for j=1:7 %total songs of disco
+    fprintf(fid,'%s ',num2str(lowerbound(1,j)));
+end
+fprintf(fid,'\n');
+for j=1:7 %total songs of disco
+    fprintf(fid,'%s ',num2str(upperbound(1,j)));
+end
+fclose(fid);
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%hiphop Training
+for i=0:49
+    if(i<10)
+        num=mat2str(i);
+        f='genres/hiphop/hiphop.0000';
+    else
+        num=mat2str(i);
+        f='genres/hiphop/hiphop.000';
+    end
+    subject='.au';
+    filename=[f num subject];
+    
+    % get fundamental frequency
+    freq=fundamental_f(filename);
+    
+    % get more info.
+    [Pitch_Mean Pitch_Std Pitch_Slope Freq Pitch_PeriodAmp Pitch_PeriodEntropy]=extractpitch(filename);
+    
+    PitchFeature(i+1, :) =[freq ; Pitch_Mean  ; Pitch_Std ; Pitch_Slope ; Freq ; Pitch_PeriodAmp ; Pitch_PeriodEntropy];
+    
+end
+%Sort the array and delete 5 max and 5 min
+[PitchFeature, index] = sort(PitchFeature);% 對矩陣 x 的元素進行排序
+lowerbound=PitchFeature(6,:);
+upperbound=PitchFeature(44,:);
+% Write to the file.
+fid=fopen('TrainingData/TrainingPitch_hiphop.txt','w');
+title='_Pitch_Mean	_Pitch_Std	_Pitch_Slope	_Pitch_PeriodFreq	_Pitch_PeriodAmp    _Pitch_PeriodEntropy';
+fprintf(fid,'%s\n',title);
+for j=1:7 %total songs of hiphop
+    fprintf(fid,'%s ',num2str(lowerbound(1,j)));
+end
+fprintf(fid,'\n');
+for j=1:7 %total songs of hiphop
+    fprintf(fid,'%s ',num2str(upperbound(1,j)));
+end
+fclose(fid);
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%jazz Training
+for i=0:49
+    if(i<10)
+        num=mat2str(i);
+        f='genres/jazz/jazz.0000';
+    else
+        num=mat2str(i);
+        f='genres/jazz/jazz.000';
+    end
+    subject='.au';
+    filename=[f num subject];
+    
+    % get fundamental frequency
+    freq=fundamental_f(filename);
+    
+    % get more info.
+    [Pitch_Mean Pitch_Std Pitch_Slope Freq Pitch_PeriodAmp Pitch_PeriodEntropy]=extractpitch(filename);
+    
+    PitchFeature(i+1, :) =[freq ; Pitch_Mean  ; Pitch_Std ; Pitch_Slope ; Freq ; Pitch_PeriodAmp ; Pitch_PeriodEntropy];
+    
+end
+%Sort the array and delete 5 max and 5 min
+[PitchFeature, index] = sort(PitchFeature);% 對矩陣 x 的元素進行排序
+lowerbound=PitchFeature(6,:);
+upperbound=PitchFeature(44,:);
+% Write to the file.
+
+fid=fopen('TrainingData/TrainingPitch_jazz.txt','w');
+title='_Pitch_Mean	_Pitch_Std	_Pitch_Slope	_Pitch_PeriodFreq	_Pitch_PeriodAmp    _Pitch_PeriodEntropy';
+fprintf(fid,'%s\n',title);
+for j=1:7 %total songs of jazz
+    fprintf(fid,'%s ',num2str(lowerbound(1,j)));
+end
+fprintf(fid,'\n');
+for j=1:7 %total songs of jazz
+    fprintf(fid,'%s ',num2str(upperbound(1,j)));
+end
+fclose(fid);
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%metal Training
+for i=0:49
+    if(i<10)
+        num=mat2str(i);
+        f='genres/metal/metal.0000';
+    else
+        num=mat2str(i);
+        f='genres/metal/metal.000';
+    end
+    subject='.au';
+    filename=[f num subject];
+    
+    % get fundamental frequency
+    freq=fundamental_f(filename);
+    
+    % get more info.
+    [Pitch_Mean Pitch_Std Pitch_Slope Freq Pitch_PeriodAmp Pitch_PeriodEntropy]=extractpitch(filename);
+    
+    PitchFeature(i+1, :) =[freq ; Pitch_Mean  ; Pitch_Std ; Pitch_Slope ; Freq ; Pitch_PeriodAmp ; Pitch_PeriodEntropy];
+    
+end
+%Sort the array and delete 5 max and 5 min
+[PitchFeature, index] = sort(PitchFeature);% 對矩陣 x 的元素進行排序
+lowerbound=PitchFeature(6,:);
+upperbound=PitchFeature(44,:);
+% Write to the file.
+fid=fopen('TrainingData/TrainingPitch_metal.txt','w');
+title='_Pitch_Mean	_Pitch_Std	_Pitch_Slope	_Pitch_PeriodFreq	_Pitch_PeriodAmp    _Pitch_PeriodEntropy';
+fprintf(fid,'%s\n',title);
+for j=1:7 %total songs of metal
+    fprintf(fid,'%s ',num2str(lowerbound(1,j)));
+end
+fprintf(fid,'\n');
+for j=1:7 %total songs of metal
+    fprintf(fid,'%s ',num2str(upperbound(1,j)));
+end
+fclose(fid);
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%pop Training
+for i=0:49
+    if(i<10)
+        num=mat2str(i);
+        f='genres/pop/pop.0000';
+    else
+        num=mat2str(i);
+        f='genres/pop/pop.000';
+    end
+    subject='.au';
+    filename=[f num subject];
+    
+    % get fundamental frequency
+    freq=fundamental_f(filename);
+    
+    % get more info.
+    [Pitch_Mean Pitch_Std Pitch_Slope Freq Pitch_PeriodAmp Pitch_PeriodEntropy]=extractpitch(filename);
+    
+    PitchFeature(i+1, :) =[freq ; Pitch_Mean  ; Pitch_Std ; Pitch_Slope ; Freq ; Pitch_PeriodAmp ; Pitch_PeriodEntropy];
+    
+end
+%Sort the array and delete 5 max and 5 min
+[PitchFeature, index] = sort(PitchFeature);% 對矩陣 x 的元素進行排序
+lowerbound=PitchFeature(6,:);
+upperbound=PitchFeature(44,:);
+% Write to the file.
+fid=fopen('TrainingData/TrainingPitch_pop.txt','w');
+title='_Pitch_Mean	_Pitch_Std	_Pitch_Slope	_Pitch_PeriodFreq	_Pitch_PeriodAmp    _Pitch_PeriodEntropy';
+fprintf(fid,'%s\n',title);
+for j=1:7 %total songs of pop
+    fprintf(fid,'%s ',num2str(lowerbound(1,j)));
+end
+fprintf(fid,'\n');
+for j=1:7 %total songs of pop
+    fprintf(fid,'%s ',num2str(upperbound(1,j)));
+end
+fclose(fid);
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%reggae Training
+for i=0:49
+    if(i<10)
+        num=mat2str(i);
+        f='genres/reggae/reggae.0000';
+    else
+        num=mat2str(i);
+        f='genres/reggae/reggae.000';
+    end
+    subject='.au';
+    filename=[f num subject];
+    
+    % get fundamental frequency
+    freq=fundamental_f(filename);
+    
+    % get more info.
+    [Pitch_Mean Pitch_Std Pitch_Slope Freq Pitch_PeriodAmp Pitch_PeriodEntropy]=extractpitch(filename);
+    
+    PitchFeature(i+1, :) =[freq ; Pitch_Mean  ; Pitch_Std ; Pitch_Slope ; Freq ; Pitch_PeriodAmp ; Pitch_PeriodEntropy];
+    
+end
+%Sort the array and delete 5 max and 5 min
+[PitchFeature, index] = sort(PitchFeature);% 對矩陣 x 的元素進行排序
+lowerbound=PitchFeature(6,:);
+upperbound=PitchFeature(44,:);
+% Write to the file.
+fid=fopen('TrainingData/TrainingPitch_reggae.txt','w');
+title='_Pitch_Mean	_Pitch_Std	_Pitch_Slope	_Pitch_PeriodFreq	_Pitch_PeriodAmp    _Pitch_PeriodEntropy';
+fprintf(fid,'%s\n',title);
+for j=1:7 %total songs of reggae
+    fprintf(fid,'%s ',num2str(lowerbound(1,j)));
+end
+fprintf(fid,'\n');
+for j=1:7 %total songs of reggae
+    fprintf(fid,'%s ',num2str(upperbound(1,j)));
+end
+fclose(fid);
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%rock Training
+for i=0:49
+    if(i<10)
+        num=mat2str(i);
+        f='genres/rock/rock.0000';
+    else
+        num=mat2str(i);
+        f='genres/rock/rock.000';
+    end
+    subject='.au';
+    filename=[f num subject];
+    
+    % get fundamental frequency
+    freq=fundamental_f(filename);
+    
+    % get more info.
+    [Pitch_Mean Pitch_Std Pitch_Slope Freq Pitch_PeriodAmp Pitch_PeriodEntropy]=extractpitch(filename);
+    
+    PitchFeature(i+1, :) =[freq ; Pitch_Mean  ; Pitch_Std ; Pitch_Slope ; Freq ; Pitch_PeriodAmp ; Pitch_PeriodEntropy];
+    
+end
+%Sort the array and delete 5 max and 5 min
+[PitchFeature, index] = sort(PitchFeature);% 對矩陣 x 的元素進行排序
+lowerbound=PitchFeature(6,:);
+upperbound=PitchFeature(44,:);
+% Write to the file.
+fid=fopen('TrainingData/TrainingPitch_rock.txt','w');
+title='_Pitch_Mean	_Pitch_Std	_Pitch_Slope	_Pitch_PeriodFreq	_Pitch_PeriodAmp    _Pitch_PeriodEntropy';
+fprintf(fid,'%s\n',title);
+for j=1:7 %total songs of reggae
+    fprintf(fid,'%s ',num2str(lowerbound(1,j)));
+end
+fprintf(fid,'\n');
+for j=1:7 %total songs of reggae
+    fprintf(fid,'%s ',num2str(upperbound(1,j)));
+end
+fclose(fid);

@@ -1,0 +1,136 @@
+function [lowerbound upperbound]=loadbound()
+
+	 base='TrainingData/TrainingPitch_blues.txt';
+     fidin=fopen('TrainingData/TrainingPitch_blues.txt');
+	 %f1=[base style(a) obj];
+	 %fidin=fopen(f1);
+     lowerbound=zeros(8,7);
+	 upperbound=zeros(1,7);
+	 num=0;
+     parsed='';
+	while (~feof(fidin)) 
+        tline=fgetl(fidin); 
+        [chopped, hz] = strtok(tline);  
+        i=1;
+        if(num==1)
+            while (any(hz))  
+                [chopped, hz] = strtok(hz);
+                fr=str2double(chopped);
+                parsed(1,i) = fr;
+                if(i==1)
+                    lowerbound(1)=fr;
+                elseif(i==2)
+                    lowerbound(2,a)=fr;
+                elseif(i==3)
+                    lowerbound(3,a)=fr;
+                elseif(i==4)
+                    lowerbound(4,a)=fr;     
+                elseif(i==5)
+                    lowerbound(5,a)=fr;     
+                elseif(i==6)
+                    lowerbound(6,a)=fr; 
+                elseif(i==7)
+					lowerbound(7,a)=fr;
+                end
+                i=i+1;
+            end
+		
+		elseif(num==2)
+			while (any(hz))  
+                [chopped, hz] = strtok(hz);
+                fr=str2double(chopped);
+                parsed(1,i) = fr;
+                if(i==1)
+                    upperbound(1,a)=fr;
+                elseif(i==2)
+                    upperbound(2,a)=fr;
+                elseif(i==3)
+                    upperbound(3,a)=fr;
+                elseif(i==4)
+                    upperbound(4,a)=fr;     
+                elseif(i==5)
+                    upperbound(5,a)=fr;     
+                elseif(i==6)
+                    upperbound(6,a)=fr; 
+                else
+					upperbound(7,a)=fr;
+                end
+                i=i+1;
+            end
+		
+        end
+
+             num=num+1;
+    
+	end	
+	
+	
+	
+	
+	fclose(fidin);
+	
+	
+	fidin1=fopen('TrainingData/TrainingPitch_blues.txt');
+
+	%f2=[base style(b) obj];
+	% fidin1=fopen(f2);
+	 num=0;
+     parsed='';
+	while (~feof(fidin1) )
+        tline=fgetl(fidin1); 
+        [chopped hz] = strtok(tline);  
+        i=1;
+        if(num==1)
+            while (any(hz))  
+                [chopped, hz] = strtok(hz);
+                fr=str2double(chopped);
+                parsed(1,i) = fr;
+                if(i==1)
+                    lowerbound(1,b)=fr;
+                elseif(i==2)
+                    lowerbound(2,b)=fr;
+                elseif(i==3)
+                    lowerbound(3,b)=fr;
+                elseif(i==4)
+                    lowerbound(4,b)=fr;     
+                elseif(i==5)
+                    lowerbound(5,b)=fr;     
+                elseif(i==6)
+                    lowerbound(6,b)=fr; 
+                elseif(i==7)
+					lowerbound(7,b)=fr;
+                end
+                i=i+1;
+            end
+		
+		elseif(num==2)
+			while (any(hz))  
+                [chopped, hz] = strtok(hz);
+                fr=str2double(chopped);
+                parsed(1,i) = fr;
+                if(i==1)
+                    upperbound(1,b)=fr;
+                elseif(i==2)
+                    upperbound(2,b)=fr;
+                elseif(i==3)
+                    upperbound(3,b)=fr;
+                elseif(i==4)
+                    upperbound(4,b)=fr;     
+                elseif(i==5)
+                    upperbound(5,b)=fr;     
+                elseif(i==6)
+                    upperbound(6,b)=fr; 
+				else
+					upperbound(7,b)=fr;
+                end
+                i=i+1;
+            end
+		
+		end		
+
+             num=num+1;
+    end
+    fclose(fidin1);
+end
+
+	
